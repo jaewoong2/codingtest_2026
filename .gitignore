@@ -38,3 +38,6 @@ ENV/
 # Editor / IDE settings
 .vscode/
 .idea/
+
+.serena/*
+.serena
