@@ -18,13 +18,16 @@ def solution():
     n, target = map(int, input().split())
     coins = [int(input()) for _ in range(n)]
     dp = [float("INF") for _ in range(target + 1)]
+    dp[0] = 0
 
     for coin in coins:
+        if coin > target:
+            continue
         dp[coin] = 1
 
     for value in range(1, target + 1):
         for coin in coins:
-            if value > coin and value - coin > 0:
+            if value >= coin and dp[value - coin] != float("INF"):
                 dp[value] = min(dp[value], dp[value - coin] + 1)
 
     return dp[target] == float("INF") and -1 or dp[target]
