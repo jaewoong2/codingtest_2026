@@ -1,4 +1,4 @@
-def solution(s):
+def solution2(s):
     length = len(s)
     answer = int(length)
 
