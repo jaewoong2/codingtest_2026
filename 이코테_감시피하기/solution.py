@@ -18,8 +18,8 @@ input = sys.stdin.readline
 
 # 이거 일직선 계산 쉽게하는 방법이 뭐가 있으려나...
 def is_find(maps, row, col, direction):
-    i, j = 1, 1
-    n_row, n_col = row + i * direction[0], col + j * direction[1]
+    dr, dc = direction
+    n_row, n_col = row + dr, col + dc
 
     while True:
         if not (0 <= n_row < len(maps) and 0 <= n_col < len(maps[0])):
@@ -31,14 +31,14 @@ def is_find(maps, row, col, direction):
         if maps[n_row][n_col] == "S":
             return True
 
-        n_row = n_row + i * direction[0]
-        n_col = n_col + j * direction[1]
+        n_row = n_row + dr
+        n_col = n_col + dc
 
 
 def combination(arr, r):
     selected = []
 
-    def c(start, chosen=[]):
+    def c(start, chosen):
         if len(chosen) == r:
             selected.append(chosen)
             return
@@ -72,6 +72,8 @@ def solution():
     moves = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
     for candidate in candidates:
+        # 해당 벽 후보에서 숨을 수 있으면 True
+        # 해당 벽 후보에서 숨을 수 없으면 Fasle
         숨을수있습니다 = True
 
         for i, j in candidate:
