@@ -11,6 +11,10 @@ if os.path.exists(os.path.join(os.path.dirname(__file__), "input.txt")):
 
 input = sys.stdin.readline
 
+# DFS 로 하면 스택이 쌓일 수 있기 때문에,
+# 굳이 DFS로 안하고 BFS로 해당 i,j 에서 탐색 할 수 있는 모든걸 return 하는
+# 식으로 진행 하는게 더 좋을 수 도 있엇으
+
 
 def solution():
     n, l, r = map(int, input().split())

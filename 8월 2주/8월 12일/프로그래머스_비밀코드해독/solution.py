@@ -43,6 +43,8 @@ def solution(n, q, ans):
         for query in q:
             count = 0
             for i in range(5):
+                # 이거를 그냥 candidate에 대해서
+                # set(으로 하던지 아니면) 비트 마스킹 방법을 찾는게 더 나을 수 있음
                 if query[i] in candidate:
                     count += 1
 

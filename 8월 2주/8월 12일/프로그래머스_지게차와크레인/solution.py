@@ -3,6 +3,10 @@
 # 바깥 0 을 extend 하는게 편해보임
 
 
+# 0으로 만들때 row 에 개수를 m + 2 로 해야함 (내가 왼쪽오른쪽에도 0을 한개씩 더 세웠기 때문에)
+# 그래서 [0][1~m+2] [n][1~m+2] 에 0 // [1~n+2][-1 -> 그 -1 이 아니라 0 앞에] [1~n+2][m + 1]
+
+
 def extend(maps):
     n, m = len(maps), len(maps[0])
     temp = []
@@ -66,13 +70,13 @@ def search_from_outside(maps, target):
 
 def solution(storage, requests):
     storage = extend(storage)
-    keys = {r[0]: [] for r in requests}
+    keys = {r[0]: set() for r in requests}
 
     for request in requests:
         for i in range(len(storage)):
             for j in range(len(storage[i])):
                 if request[0] == storage[i][j]:
-                    keys[request[0]].append((i, j))
+                    keys[request[0]].add((i, j))
 
     for request in requests:
         if len(request) == 1:
@@ -81,7 +85,7 @@ def solution(storage, requests):
         if len(request) == 2 and len(keys[request[0]]) > 0:
             for r, c in keys[request[0]]:
                 storage[r][c] = 0
-                keys[request[0]] = []
+                keys[request[0]] = set()
     answer = 0
 
     for r in storage:
