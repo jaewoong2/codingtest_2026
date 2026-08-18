@@ -87,6 +87,8 @@ def solution():
                 if 찾았습니다:
                     # 찾을 수 있습니다.
                     숨을수있습니다 = False
+                    # 여기서 잘라내도됨  -> break
+                    break
 
         if 숨을수있습니다:
             # 한번이라도 다 숨을 수 있으면 YES
